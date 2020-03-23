@@ -1,0 +1,8 @@
+syntax="proto3"; //版本
+option java_outer_classname="StudentPojo";//外部类名
+//使用message管理器
+message Student{ //真正发送的Pojo对象
+        int32 id=1; //student类中有一个属性名字为ID类型为int32
+        string nam=2;
+}
+
