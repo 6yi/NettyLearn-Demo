@@ -1,0 +1,30 @@
+syntax ="proto3";
+option optimize_for = SPEED;
+option java_package = "Codec2";
+option java_outer_classname= "MyDataInfo";//外部类名
+
+message MyMessage{
+    enum DataType{
+        studentType=0;
+        workerType=1;
+    }
+
+    //用来标识所传的枚举类型
+    DataType data_type=1;
+
+    oneof dataBody{
+        student stu=2;
+        worker wk=3;
+    }
+
+}
+
+message student{
+    int32 id=1;
+    string name=2;
+}
+message worker{
+    string name=1;
+    int32 age=2;
+
+}

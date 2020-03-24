@@ -13,20 +13,18 @@ import io.netty.util.CharsetUtil;
 public class NettyServerHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
-        nettyServer.logger_.info("server ctx:"+ctx);
-        ByteBuf byteBuf= (ByteBuf) msg;
-        nettyServer.logger_.info("msg : "+byteBuf.toString(CharsetUtil.UTF_8));
-        nettyServer.logger_.info(ctx.channel().remoteAddress());
+       StudentPojo.Student student= ((StudentPojo.Student) msg);
+       System.out.println("客户端数据: "+student.getId()+"  "+student.getNam());
     }
 
     @Override
     public void channelReadComplete(ChannelHandlerContext ctx) throws Exception {
-       ctx.writeAndFlush(Unpooled.copiedBuffer("Hello", CharsetUtil.UTF_8));
+        ctx.writeAndFlush(Unpooled.copiedBuffer("连接成功",CharsetUtil.UTF_8));
     }
 
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
-        ctx.channel().close();
+
     }
 
 }

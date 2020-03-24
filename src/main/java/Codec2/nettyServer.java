@@ -1,4 +1,5 @@
-package Codec;
+package Codec2;
+import Codec.StudentPojo;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
@@ -31,7 +32,7 @@ public class nettyServer {
                         protected void initChannel(Channel channel) throws Exception {
 
                             //指定解码
-                            channel.pipeline().addLast(new ProtobufDecoder(StudentPojo.Student.getDefaultInstance()));
+                            channel.pipeline().addLast(new ProtobufDecoder(MyDataInfo.MyMessage.getDefaultInstance()));
 
                             channel.pipeline().addLast(new NettyServerHandler());
                         }

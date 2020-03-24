@@ -12,17 +12,11 @@ public class NettyClientHandler extends ChannelInboundHandlerAdapter {
     //通道就绪
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
-
-        nettyServer.logger_.info("client"+ctx);
-        ctx.channel().eventLoop().execute(new Runnable() {
-            @Override
-            public void run() {
-                ctx.writeAndFlush(Unpooled.copiedBuffer("from Client", CharsetUtil.UTF_8));
-            }
-        });
-
-
+        StudentPojo.Student student = StudentPojo.Student.newBuilder().setId(67).setNam("刘正").build();
+        ctx.writeAndFlush(student);
     }
+
+
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
