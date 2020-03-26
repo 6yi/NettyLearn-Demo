@@ -34,7 +34,7 @@ public class GroupChatServer {
                         }
                     });
             ChannelFuture channelFuture = serverBootstrap.bind(port).sync();
-            Log.logger_.info("服务器启动bind:");
+            Log.logger_.info("服务器启动OK");
             channelFuture.channel().closeFuture().sync();
         }finally {
             bossGroup.shutdownGracefully();
@@ -44,7 +44,7 @@ public class GroupChatServer {
 
     public static void main(String[] args) throws InterruptedException {
 
-            new GroupChatServer(9090).run();
+            new GroupChatServer(8091).run();
 
     }
 
